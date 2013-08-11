@@ -178,7 +178,7 @@ function media_inuse($id) {
     global $conf;
     $mediareferences = array();
     if($conf['refcheck']){
-        $mediareferences = ft_mediause($id,$conf['refshow']);
+        $mediareferences = ft_mediause($id,true);
         if(!count($mediareferences)) {
             return false;
         } else {
@@ -591,7 +591,10 @@ function media_filelist($ns,$auth=null,$jump='',$fullscreenview=false,$sort=fals
         // FIXME: print permission warning here instead?
         echo '<div class="nothing">'.$lang['nothingfound'].'</div>'.NL;
     }else{
-        if (!$fullscreenview) media_uploadform($ns, $auth);
+        if (!$fullscreenview) {
+            media_uploadform($ns, $auth);
+            media_searchform($ns);
+        }
 
         $dir = utf8_encodeFN(str_replace(':','/',$ns));
         $data = array();
@@ -614,7 +617,6 @@ function media_filelist($ns,$auth=null,$jump='',$fullscreenview=false,$sort=fals
             if ($fullscreenview) echo '</ul>'.NL;
         }
     }
-    if (!$fullscreenview) media_searchform($ns);
 }
 
 /**
@@ -1299,7 +1301,7 @@ function media_restore($image, $rev, $auth){
  * @author Kate Arzamastseva <pshns@ukr.net>
  * @triggers MEDIA_SEARCH
  */
-function media_searchlist($query,$ns,$auth=null,$fullscreen=false,$sort=''){
+function media_searchlist($query,$ns,$auth=null,$fullscreen=false,$sort='natural'){
     global $conf;
     global $lang;
 
@@ -1319,15 +1321,10 @@ function media_searchlist($query,$ns,$auth=null,$fullscreen=false,$sort=''){
                     $conf['mediadir'],
                     'search_media',
                     array('showmsg'=>false,'pattern'=>$pattern),
-                    $dir);
+                    $dir,
+                    1,
+                    $sort);
         }
-
-        $data = array();
-        foreach ($evdata['data'] as $k => $v) {
-            $data[$k] = ($sort == 'date') ? $v['mtime'] : $v['id'];
-        }
-        array_multisort($data, SORT_DESC, SORT_NUMERIC, $evdata['data']);
-
         $evt->advise_after();
         unset($evt);
     }
@@ -1905,7 +1902,7 @@ function media_crop_image($file, $ext, $w, $h=0){
  */
 function media_get_token($id,$w,$h){
     // token is only required for modified images
-    if ($w || $h) {
+    if ($w || $h || media_isexternal($id)) {
         $token = $id;
         if ($w) $token .= '.'.$w;
         if ($h) $token .= '.'.$h;
