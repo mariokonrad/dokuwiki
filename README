@@ -8,3 +8,7 @@ DokuWiki - 2004-2014 (c) Andreas Gohr <andi@splitbrain.org>
                          and the DokuWiki Community
 See COPYING and file headers for license info
 
+Extensions:
+- configuration option: 'pagecasesensitive': case sentitivity for page names
+- media white list (see conf/mediawhitelist.conf)
+
