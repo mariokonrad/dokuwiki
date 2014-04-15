@@ -29,6 +29,10 @@
  * @author Gerardo Zamudio <gerardo@gerardozamudio.net>
  * @author Mercè López mercelz@gmail.com
  * @author r0sk <r0sk10@gmail.com>
+ * @author monica <may.dorado@gmail.com>
+ * @author Antonio Bueno <atnbueno@gmail.com>
+ * @author Juan De La Cruz <juann.dlc@gmail.com>
+ * @author Fernando <fdiezala@gmail.com>
  */
 $lang['encoding']              = 'utf-8';
 $lang['direction']             = 'ltr';
@@ -73,6 +77,8 @@ $lang['btn_register']          = 'Registrarse';
 $lang['btn_apply']             = 'Aplicar';
 $lang['btn_media']             = 'Gestor de ficheros';
 $lang['btn_deleteuser']        = 'Elimina Mi Cuenta';
+$lang['btn_img_backto']        = 'Volver a %s';
+$lang['btn_mediaManager']      = 'Ver en el Administrador de medios';
 $lang['loggedinas']            = 'Conectado como ';
 $lang['user']                  = 'Usuario';
 $lang['pass']                  = 'Contraseña';
@@ -105,6 +111,7 @@ $lang['profnodelete']          = 'Este wiki no soporta el borrado de usuarios';
 $lang['profdeleteuser']        = 'Eliminar Cuenta';
 $lang['profdeleted']           = 'Tu cuenta de usuario ha sido eliminada de este wiki';
 $lang['profconfdelete']        = 'Deseo eliminar mi cuenta de este wiki. <br /> Esta acción es irreversible.';
+$lang['profconfdeletemissing'] = 'Casilla de verificación no activada.';
 $lang['pwdforget']             = '¿Has olvidado tu contraseña? Consigue una nueva';
 $lang['resendna']              = 'Este wiki no brinda la posibilidad de reenvío de contraseña.';
 $lang['resendpwd']             = 'Establecer nueva contraseña para';
@@ -203,6 +210,9 @@ $lang['difflink']              = 'Enlace a la vista de comparación';
 $lang['diff_type']             = 'Ver diferencias';
 $lang['diff_inline']           = 'En línea';
 $lang['diff_side']             = 'Lado a lado';
+$lang['diffprevrev']           = 'Revisión previa';
+$lang['diffnextrev']           = 'Próxima revisión';
+$lang['difflastrev']           = 'Última revisión';
 $lang['line']                  = 'Línea';
 $lang['breadcrumb']            = 'Traza';
 $lang['youarehere']            = 'Estás aquí';
@@ -259,7 +269,6 @@ $lang['admin_register']        = 'Añadir nuevo usuario';
 $lang['metaedit']              = 'Editar metadatos';
 $lang['metasaveerr']           = 'La escritura de los metadatos ha fallado';
 $lang['metasaveok']            = 'Los metadatos han sido guardados';
-$lang['img_backto']            = 'Volver a';
 $lang['img_title']             = 'Título';
 $lang['img_caption']           = 'Epígrafe';
 $lang['img_date']              = 'Fecha';
@@ -272,7 +281,6 @@ $lang['img_camera']            = 'Cámara';
 $lang['img_keywords']          = 'Palabras claves';
 $lang['img_width']             = 'Ancho';
 $lang['img_height']            = 'Alto';
-$lang['img_manager']           = 'Ver en el Administrador de medios';
 $lang['subscr_subscribe_success'] = 'Se agregó %s a las listas de suscripción para %s';
 $lang['subscr_subscribe_error'] = 'Error al agregar %s a las listas de suscripción para %s';
 $lang['subscr_subscribe_noaddress'] = 'No hay dirección asociada con tu registro, no se puede agregarte a la lista de suscripción';
@@ -287,7 +295,8 @@ $lang['subscr_m_unsubscribe']  = 'Darse de baja';
 $lang['subscr_m_subscribe']    = 'Suscribirse';
 $lang['subscr_m_receive']      = 'Recibir';
 $lang['subscr_style_every']    = 'enviar correo en cada cambio';
-$lang['authmodfailed']         = 'Está mal configurada la autenticación de usuarios. Por favor, avisa al administrador del wiki.';
+$lang['subscr_style_digest']   = 'Resumen de correo electrónico de cambios por cada página (cada %.2f días)';
+$lang['subscr_style_list']     = 'lista de páginas modificadas desde el último correo electrónico (cada %.2f días)';
 $lang['authtempfail']          = 'La autenticación de usuarios no está disponible temporalmente. Si esta situación persiste, por favor avisa al administrador del wiki.';
 $lang['authpwdexpire']         = 'Su contraseña caducara en %d días, debería cambiarla lo antes posible';
 $lang['i_chooselang']          = 'Elija su idioma';
@@ -310,6 +319,7 @@ $lang['i_policy']              = 'Política de ACL inicial';
 $lang['i_pol0']                = 'Wiki abierto (leer, escribir y subir archivos para todos)';
 $lang['i_pol1']                = 'Wiki público (leer para todos, escribir y subir archivos para usuarios registrados únicamente)';
 $lang['i_pol2']                = 'Wiki cerrado (leer, escribir y subir archivos para usuarios registrados únicamente)';
+$lang['i_allowreg']            = 'Permitir que los usuarios se registren a sí mismos';
 $lang['i_retry']               = 'Reintentar';
 $lang['i_license']             = 'Por favor escoja una licencia bajo la que publicar su contenido:';
 $lang['i_license_none']        = 'No mostrar ninguna información sobre licencias';
@@ -347,3 +357,7 @@ $lang['media_perm_read']       = 'Disculpa, no tienes los permisos necesarios pa
 $lang['media_perm_upload']     = 'Disculpa, no tienes los permisos necesarios para cargar ficheros.';
 $lang['media_update']          = 'Actualizar nueva versión';
 $lang['media_restore']         = 'Restaurar esta versión';
+$lang['currentns']             = 'Espacio de nombres actual';
+$lang['searchresult']          = 'Resultado de la búsqueda';
+$lang['plainhtml']             = 'HTML sencillo';
+$lang['wikimarkup']            = 'Etiquetado Wiki';

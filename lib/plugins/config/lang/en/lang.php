@@ -63,7 +63,7 @@ $lang['baseurl']     = 'Server URL (eg. <code>http://www.yourserver.com</code>).
 $lang['cookiedir']   = 'Cookie path. Leave blank for using baseurl.';
 $lang['dmode']       = 'Directory creation mode';
 $lang['fmode']       = 'File creation mode';
-$lang['allowdebug']  = 'Allow debug <b>disable if not needed!</b>';
+$lang['allowdebug']  = 'Allow debug. <b>Disable if not needed!</b>';
 
 /* Display Settings */
 $lang['recent']      = 'Number of entries per page in the recent changes';
@@ -83,7 +83,7 @@ $lang['camelcase']   = 'Use CamelCase for links';
 $lang['deaccent']    = 'How to clean pagenames';
 $lang['useheading']  = 'Use first heading for pagenames';
 $lang['sneaky_index'] = 'By default, DokuWiki will show all namespaces in the sitemap. Enabling this option will hide those where the user doesn\'t have read permissions. This might result in hiding of accessable subnamespaces which may make the index unusable with certain ACL setups.';
-$lang['hidepages']   = 'Hide pages matching this regular expressions from search, the sitemap and other automatic indexes';
+$lang['hidepages']   = 'Hide pages matching this regular expression from search, the sitemap and other automatic indexes';
 
 /* Authentication Settings */
 $lang['useacl']      = 'Use access control lists';
@@ -101,6 +101,7 @@ $lang['disableactions_subscription'] = 'Subscribe/Unsubscribe';
 $lang['disableactions_wikicode'] = 'View source/Export Raw';
 $lang['disableactions_profile_delete'] = 'Delete Own Account';
 $lang['disableactions_other'] = 'Other actions (comma separated)';
+$lang['disableactions_rss'] = 'XML Syndication (RSS)';
 $lang['auth_security_timeout'] = 'Authentication Security Timeout (seconds)';
 $lang['securecookie'] = 'Should cookies set via HTTPS only be sent via HTTPS by the browser? Disable this option when only the login of your wiki is secured with SSL but browsing the wiki is done unsecured.';
 $lang['remote']      = 'Enable the remote API system. This allows other applications to access the wiki via XML-RPC or other mechanisms.';
@@ -182,7 +183,7 @@ $lang['proxy____port']    = 'Proxy port';
 $lang['proxy____user']    = 'Proxy user name';
 $lang['proxy____pass']    = 'Proxy password';
 $lang['proxy____ssl']     = 'Use SSL to connect to proxy';
-$lang['proxy____except']  = 'Regular expression to match URLs for which the proxy should be skipped for.';
+$lang['proxy____except']  = 'Regular expression to match URLs for which the proxy should be skipped.';
 
 /* Safemode Hack */
 $lang['safemodehack'] = 'Enable safemode hack';
@@ -246,10 +247,11 @@ $lang['xsendfile_o_2'] = 'Standard X-Sendfile header';
 $lang['xsendfile_o_3'] = 'Proprietary Nginx X-Accel-Redirect header';
 
 /* Display user info */
-$lang['showuseras_o_loginname']  = 'Login name';
-$lang['showuseras_o_username']   = "User's full name";
-$lang['showuseras_o_email']      = "User's e-mail addresss (obfuscated according to mailguard setting)";
-$lang['showuseras_o_email_link'] = "User's e-mail addresss as a mailto: link";
+$lang['showuseras_o_loginname']     = 'Login name';
+$lang['showuseras_o_username']      = "User's full name";
+$lang['showuseras_o_username_link'] = "User's full name as interwiki user link";
+$lang['showuseras_o_email']         = "User's e-mail addresss (obfuscated according to mailguard setting)";
+$lang['showuseras_o_email_link']    = "User's e-mail addresss as a mailto: link";
 
 /* useheading options */
 $lang['useheading_o_0'] = 'Never';

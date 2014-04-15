@@ -26,13 +26,13 @@ function checkUpdateMessages(){
     // check if new messages needs to be fetched
     if($lm < time()-(60*60*24) || $lm < @filemtime(DOKU_INC.DOKU_SCRIPT)){
         @touch($cf);
-        dbglog("checkUpdatesMessages(): downloading messages.txt");
+        dbglog("checkUpdateMessages(): downloading messages.txt");
         $http = new DokuHTTPClient();
         $http->timeout = 12;
         $data = $http->get(DOKU_MESSAGEURL.$updateVersion);
         io_saveFile($cf,$data);
     }else{
-        dbglog("checkUpdatesMessages(): messages.txt up to date");
+        dbglog("checkUpdateMessages(): messages.txt up to date");
         $data = io_readFile($cf);
     }
 
@@ -102,15 +102,21 @@ function getVersion(){
 function check(){
     global $conf;
     global $INFO;
+    /* @var Input $INPUT */
+    global $INPUT;
 
     if ($INFO['isadmin'] || $INFO['ismanager']){
         msg('DokuWiki version: '.getVersion(),1);
-    }
 
-    if(version_compare(phpversion(),'5.2.0','<')){
-        msg('Your PHP version is too old ('.phpversion().' vs. 5.2.0+ needed)',-1);
-    }else{
-        msg('PHP version '.phpversion(),1);
+        if(version_compare(phpversion(),'5.2.0','<')){
+            msg('Your PHP version is too old ('.phpversion().' vs. 5.2.0+ needed)',-1);
+        }else{
+            msg('PHP version '.phpversion(),1);
+        }
+    } else {
+        if(version_compare(phpversion(),'5.2.0','<')){
+            msg('Your PHP version is too old',-1);
+        }
     }
 
     $mem = (int) php_to_byte(ini_get('memory_limit'));
@@ -193,7 +199,6 @@ function check(){
         msg('Valid locale '.hsc($loc).' found.', 1);
     }
 
-
     if($conf['allowdebug']){
         msg('Debugging support is enabled. If you don\'t need it you should set $conf[\'allowdebug\'] = 0',-1);
     }else{
@@ -201,7 +206,7 @@ function check(){
     }
 
     if($INFO['userinfo']['name']){
-        msg('You are currently logged in as '.$_SERVER['REMOTE_USER'].' ('.$INFO['userinfo']['name'].')',0);
+        msg('You are currently logged in as '.$INPUT->server->str('REMOTE_USER').' ('.$INFO['userinfo']['name'].')',0);
         msg('You are part of the groups '.join($INFO['userinfo']['grps'],', '),0);
     }else{
         msg('You are currently not logged in',0);
@@ -358,6 +363,9 @@ function dbg($msg,$hidden=false){
  */
 function dbglog($msg,$header=''){
     global $conf;
+    /* @var Input $INPUT */
+    global $INPUT;
+
     // The debug log isn't automatically cleaned thus only write it when
     // debugging has been enabled by the user.
     if($conf['allowdebug'] !== 1) return;
@@ -370,7 +378,7 @@ function dbglog($msg,$header=''){
     $file = $conf['cachedir'].'/debug.log';
     $fh = fopen($file,'a');
     if($fh){
-        fwrite($fh,date('H:i:s ').$_SERVER['REMOTE_ADDR'].': '.$msg."\n");
+        fwrite($fh,date('H:i:s ').$INPUT->server->str('REMOTE_ADDR').': '.$msg."\n");
         fclose($fh);
     }
 }

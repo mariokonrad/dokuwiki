@@ -10,6 +10,8 @@
  * @author Petros Vidalis <pvidalis@gmail.com>
  * @author Vasileios Karavasilis vasileioskaravasilis@gmail.com
  * @author Constantinos Xanthopoulos <conx@xanthopoulos.info>
+ * @author chris taklis <ctaklis@gmail.com>
+ * @author cross <cross1962@gmail.com>
  */
 $lang['encoding']              = 'utf-8';
 $lang['direction']             = 'ltr';
@@ -85,6 +87,7 @@ $lang['profchanged']           = 'Το προφίλ χρήστη τροποπο�
 $lang['profnodelete']          = 'Το wiki δεν υποστηρίζει την διαγραφή χρηστών';
 $lang['profdeleteuser']        = 'Διαγραφή λογαριασμού';
 $lang['profdeleted']           = 'Ο λογαριασμός διαγράφηκε από αυτό το wiki';
+$lang['profconfdelete']        = 'Επιθυμώ να διαγράψω τον λογαριασμό μου από αυτό το wiki. <br/> Αυτή η επιλογή δεν μπορεί να αναιρεθεί.';
 $lang['pwdforget']             = 'Ξεχάσατε το κωδικό σας; Αποκτήστε νέο.';
 $lang['resendna']              = 'Αυτό το wiki δεν υποστηρίζει την εκ\' νέου αποστολή κωδικών.';
 $lang['resendpwd']             = 'Εισαγωγή νέου ωδικού για';
@@ -238,7 +241,7 @@ $lang['admin_register']        = 'Προσθήκη νέου χρήστη';
 $lang['metaedit']              = 'Τροποποίηση metadata';
 $lang['metasaveerr']           = 'Η αποθήκευση των metadata απέτυχε';
 $lang['metasaveok']            = 'Επιτυχής αποθήκευση metadata';
-$lang['img_backto']            = 'Επιστροφή σε';
+$lang['btn_img_backto']            = 'Επιστροφή σε %s';
 $lang['img_title']             = 'Τίτλος';
 $lang['img_caption']           = 'Λεζάντα';
 $lang['img_date']              = 'Ημερομηνία';
@@ -251,7 +254,7 @@ $lang['img_camera']            = 'Camera';
 $lang['img_keywords']          = 'Λέξεις-κλειδιά';
 $lang['img_width']             = 'Πλάτος';
 $lang['img_height']            = 'Ύψος';
-$lang['img_manager']           = 'Εμφάνιση στον διαχειριστή πολυμέσων';
+$lang['btn_mediaManager']           = 'Εμφάνιση στον διαχειριστή πολυμέσων';
 $lang['subscr_subscribe_success'] = 'Ο/η %s προστέθηκε στην λίστα ειδοποιήσεων για το %s';
 $lang['subscr_subscribe_error'] = 'Σφάλμα κατά την προσθήκη του/της %s στην λίστα ειδοποιήσεων για το %s';
 $lang['subscr_subscribe_noaddress'] = 'Δεν υπάρχει διεύθυνση ταχυδρομείου συσχετισμένη με το όνομα χρήστη σας. Κατά συνέπεια δεν μπορείτε να προστεθείτε στην λίστα ειδοποιήσεων';
@@ -268,9 +271,8 @@ $lang['subscr_m_receive']      = 'Λήψη';
 $lang['subscr_style_every']    = 'email σε κάθε αλλαγή';
 $lang['subscr_style_digest']   = 'συνοπτικό email αλλαγών της σελίδας (κάθε %.2f μέρες)';
 $lang['subscr_style_list']     = 'λίστα σελίδων με αλλαγές μετά από το τελευταίο email (κάθε %.2f μέρες)';
-$lang['authmodfailed']         = 'Κακή ρύθμιση λίστας χρηστών. Παρακαλούμε ενημερώστε τον διαχειριστή του wiki.';
 $lang['authtempfail']          = 'Η συνδεση χρηστών είναι απενεργοποιημένη αυτή την στιγμή. Αν αυτό διαρκέσει για πολύ, παρακαλούμε ενημερώστε τον διαχειριστή του wiki.';
-$lang['authpwdexpire']         = 'Ο κωδικός πρόσβασης θα λήξει σε %s ημέρες. Προτείνουμε να τον αλλάξετε σύντομα.';
+$lang['authpwdexpire']         = 'Ο κωδικός πρόσβασης θα λήξει σε %d ημέρες. Προτείνουμε να τον αλλάξετε σύντομα.';
 $lang['i_chooselang']          = 'Επιλογή γλώσσας';
 $lang['i_installer']           = 'Οδηγός εγκατάστασης DokuWiki';
 $lang['i_wikiname']            = 'Ονομασία wiki';
@@ -292,6 +294,7 @@ $lang['i_policy']              = 'Αρχική πολιτική Λίστας Δ�
 $lang['i_pol0']                = 'Ανοιχτό Wiki (όλοι μπορούν να διαβάσουν ή να δημιουργήσουν/τροποποιήσουν σελίδες και να μεταφορτώσουν αρχεία)';
 $lang['i_pol1']                = 'Δημόσιο Wiki (όλοι μπορούν να διαβάσουν σελίδες αλλά μόνο οι εγγεγραμμένοι χρήστες μπορούν να δημιουργήσουν/τροποποιήσουν σελίδες και να μεταφορτώσουν αρχεία)';
 $lang['i_pol2']                = 'Κλειστό Wiki (μόνο οι εγγεγραμμένοι χρήστες μπορούν να διαβάσουν ή να δημιουργήσουν/τροποποιήσουν σελίδες και να μεταφορτώσουν αρχεία)';
+$lang['i_allowreg']            = 'Οι χρήστες επιτρέπεται να εγγραφούν μόνοι τους';
 $lang['i_retry']               = 'Νέα προσπάθεια';
 $lang['i_license']             = 'Παρακαλώ επιλέξτε την άδεια που θα χρησιμοποιήσετε για την διάθεση του περιεχομένου σας:';
 $lang['recent_global']         = 'Βλέπετε τις αλλαγές εντός του φακέλου <b>%s</b>. Μπορείτε επίσης να <a href="%s">δείτε τις πρόσφατες αλλαγές σε όλο το wiki</a>.';
@@ -320,8 +323,10 @@ $lang['media_search']          = 'Αναζήτηση στο <strong>%s</strong> 
 $lang['media_view']            = '%s';
 $lang['media_viewold']         = '%s στα %s';
 $lang['media_edit']            = 'Επεξεργασία %s';
+$lang['media_history']         = 'Ιστορικό των %s';
 $lang['media_meta_edited']     = 'τα μεταδεδομένα επεξεργάστηκαν';
 $lang['media_perm_read']       = 'Συγνώμη, δεν έχετε επαρκή διακαιώματα για να διαβάσετε αυτά τα αρχεία.';
 $lang['media_perm_upload']     = 'Συγνώμη, δεν έχετε επαρκή διακαιώματα για να φορτώσετε αυτά τα αρχεία.';
 $lang['media_update']          = 'Φόρτωση νέας έκδοσης';
 $lang['media_restore']         = 'Επαναφορά αυτή της έκδοσης';
+$lang['searchresult']          = 'Αποτέλεσμα έρευνας';

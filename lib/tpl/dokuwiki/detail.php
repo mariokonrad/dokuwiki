@@ -28,8 +28,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
 
 <body>
     <!--[if lte IE 7 ]><div id="IE7"><![endif]--><!--[if IE 8 ]><div id="IE8"><![endif]-->
-    <div id="dokuwiki__site"><div id="dokuwiki__top" class="site <?php echo tpl_classes(); ?> <?php
-        echo ($showSidebar) ? 'showSidebar' : ''; ?> <?php echo ($hasSidebar) ? 'hasSidebar' : ''; ?>">
+    <div id="dokuwiki__site"><div id="dokuwiki__top" class="site <?php echo tpl_classes(); ?>">
 
         <?php include('tpl_header.php') ?>
 
@@ -56,37 +55,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
                         <?php tpl_img(900,700); /* parameters: maximum width, maximum height (and more) */ ?>
 
                         <div class="img_detail">
-                            <dl>
-                                <?php
-                                    // @todo: logic should be transferred to backend
-                                    $config_files = getConfigFiles('mediameta');
-                                    foreach ($config_files as $config_file) {
-                                        if(@file_exists($config_file)) {
-                                            include($config_file);
-                                        }
-                                    }
-
-                                    foreach($fields as $key => $tag){
-                                        $t = array();
-                                        if (!empty($tag[0])) {
-                                            $t = array($tag[0]);
-                                        }
-                                        if(is_array($tag[3])) {
-                                            $t = array_merge($t,$tag[3]);
-                                        }
-                                        $value = tpl_img_getTag($t);
-                                        if ($value) {
-                                            echo '<dt>'.$lang[$tag[1]].':</dt><dd>';
-                                            if ($tag[2] == 'date') {
-                                                echo dformat($value);
-                                            } else {
-                                                echo hsc($value);
-                                            }
-                                            echo '</dd>';
-                                        }
-                                    }
-                                ?>
-                            </dl>
+                            <?php tpl_img_meta(); ?>
                         </div>
                         <?php //Comment in for Debug// dbg(tpl_img_getTag('Simple.Raw'));?>
                     <?php endif; ?>
@@ -110,27 +79,18 @@ header('X-UA-Compatible: IE=edge,chrome=1');
                     <div class="tools">
                         <ul>
                             <?php
-                                $data = array();
+                                $data = array(
+                                    'view' => 'detail',
+                                    'items' => array(
+                                        'mediaManager' => tpl_action('mediaManager', 1, 'li', 1, '<span>', '</span>'),
+                                        'img_backto' =>   tpl_action('img_backto',   1, 'li', 1, '<span>', '</span>'),
+                                    )
+                                );
 
-                                // View in media manager; @todo: transfer logic to backend
-                                $imgNS = getNS($IMG);
-                                $authNS = auth_quickaclcheck("$imgNS:*");
-                                if (($authNS >= AUTH_UPLOAD) && function_exists('media_managerURL')) {
-                                    $mmURL = media_managerURL(array('ns' => $imgNS, 'image' => $IMG));
-                                    $data['mediaManager'] = '<li><a href="'.$mmURL.'" class="mediaManager"><span>'.$lang['img_manager'].'</span></a></li>';
-                                }
-
-                                // Back to [ID]; @todo: transfer logic to backend
-                                $data['img_backto'] = '<li><a href="'.wl($ID).'" class="back"><span>'.$lang['img_backto'].' '.$ID.'</span></a></li>';
-
-                                // the page tools can be ammended through a custom plugin hook
-                                // if you're deriving from this template and your design is close enough to
-                                // the dokuwiki template you might want to trigger a DOKUWIKI event instead
-                                // of using $conf['tpl'] here
-                                $hook = 'TEMPLATE_'.strtoupper($conf['tpl']).'_PAGETOOLS_DISPLAY';
-                                $evt = new Doku_Event($hook, $data);
-                                if($evt->advise_before()){
-                                    foreach($evt->data as $k => $html) echo $html;
+                                // the page tools can be amended through a custom plugin hook
+                                $evt = new Doku_Event('TEMPLATE_PAGETOOLS_DISPLAY', $data);
+                                if($evt->advise_before()) {
+                                    foreach($evt->data['items'] as $k => $html) echo $html;
                                 }
                                 $evt->advise_after();
                                 unset($data);
